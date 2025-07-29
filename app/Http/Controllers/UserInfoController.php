@@ -17,32 +17,13 @@ class UserInfoController extends Controller
 {
     public function index(Request $request)
     {
-        $WatcherID = Auth::user()->id;
-        $FirstName = DB::table('watchers')->where('Watchers_id', $WatcherID)->value('FirstName');
-        $LastName = DB::table('watchers')->where('Watchers_id', $WatcherID)->value('LastName');
-        $Designation = DB::table('watchers')->where('Watchers_id', $WatcherID)->value('Designation');
-        $PrecinctID = DB::table('watchers')->where('Watchers_id', $WatcherID)->value('Precinct_id');
-        $BarangayID = DB::table('precincts')->where('Precinct_id', $PrecinctID)->value('Brgy_id');
-        $BarangayName = DB::table('barangays')->where('brgy_id', $BarangayID)->value('brgyName');
-        $Registered = DB::table('precincts')->where('Precinct_id', $PrecinctID)->value('RegisteredVoters');
-        $PrecinctName = DB::table('precincts')->where('Precinct_id', $PrecinctID)->value('PrecinctCode');
-        $NumVotes = DB::table('voting_transactions')->where('Watcher_id', $WatcherID)->value('NumberofVotes');
-        $LastUpdate = DB::table('voting_transactions')->where('Watcher_id', $WatcherID)->value('updated_at');
-        $Invalid = DB::table('voting_transactions')->where('Watcher_id', $WatcherID)->value('Invalid_Votes');
-        $LastUpdate2 = Carbon::parse($LastUpdate)->diffForHumans();
+        $UserID = Auth::user()->id;
+        $name = DB::table('userinfo')->where('id', $UserID)->value('name');
+        
 
        
         return view('UserInput', [
-            'FirstName' => $FirstName,
-            'LastName' => $LastName,
-            'Designation' => $Designation,
-            'PrecinctName' => $PrecinctName,
-            'PrecinctID' => $PrecinctID,
-            'Registered' => $Registered,
-            'NumVotes' => $NumVotes,
-            'LastUpdate' => $LastUpdate2,
-            'BarangayName' => $BarangayName,
-            'Invalid' => $Invalid,
+            'name' => $name,
         ]);
     }
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Barangay Data</title>
+    <title>Taxpayer Search</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -17,13 +17,13 @@
 
     <div class="container">
         <div class="card mt-5">
-            <h3 class="card-header p-3">Barangay tables</h3>
+            <h3 class="card-header p-3">Taxpayer tables</h3>
             <div class="card-body">
                 <table class="table table-bordered data-table">
                     <thead>
                         <tr>
-                            <th>Barangay ID</th>
-                            <th>BarangayName</th>
+                            <th>ID</th>
+                            <th>Name</th>
 
                             <th width="100px">Action</th>
                         </tr>
@@ -45,8 +45,8 @@
             serverSide: true,
             ajax: "{{ route('barangays.index') }}",
             columns: [{
-                    data: 'brgy_id',
-                    name: 'brgy_id',
+                    data: 'id',
+                    name: 'id',
                 },
                 {
                     data: 'brgyName',

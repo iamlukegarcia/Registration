@@ -70,17 +70,12 @@
                 <div class="block my-3 max-w-sm p-6 bg-gray-200 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
                     <div>
                         <div  >
-                            Welcome {{ $FirstName }} {{ $LastName }}
+                            Welcome {{ $name }}  
                         </div>
                     </div>
                     <div class= >
                         <div  >
-                            Designated Precinct: Clustered Precinct {{ $PrecinctName }}<br>
-                            Designated Barangay: {{ $BarangayName }}<br>
-                            Designated Position: {{ $Designation }}<br>
-                            Number of registered: {{ $Registered }} <br>
-                            Hindi pa nakakaboto: <span class="h6"> {{ $Registered - $NumVotes }}
-                                ({{ round(($NumVotes / $Registered) * 100, 2) }}%) <br></span>
+                         
                         </div>
                     </div>
                 </div>
@@ -99,34 +94,34 @@
                         <div>
                             <label for="label1" class="block mb-2 text-lg font-weight-bold text-gray-900">Ilan ang
                                 nakaboto na?</label>
-                            <input type="number" class="form-control" name="id" value="{{ $PrecinctID }}"
+                            <input type="number" class="form-control" name="id" value=" "
                                 hidden>
                             <input type="number" class="form-control" name="LastVoteUpdate"
-                                value="{{ $NumVotes }}" hidden>
+                                value=" " hidden>
                             <input type="number" class="form-control" name="LastInvalidVoteUpdate"
-                                value="{{ $Invalid }}" hidden>
-                            <input type="number" class="form-control" name="Registered" value="{{ $Registered }}"
+                                value=" " hidden>
+                            <input type="number" class="form-control" name="Registered" value=" "
                                 hidden>
                             <input type="number" name="vote" id="vote"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="Ex. {{ $PrecinctID }}" required />
+                                placeholder=" " required />
                         </div>
                         <div>
                             <label for="label1" class="block mb-2 text-lg font-weight-bold text-gray-900">Ilan ang
                                 Invalid votes? </label>
                             <input type="number" name="Invalidvote" id="Invalidvote"
-                                placeholder="Ex. {{ $PrecinctID }}"
+                                placeholder="Ex. "
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 required />
 
                             <br><br>
                             <h3 class="text-3xl font-bold"> Valid Votes: <span class="font-italic">
-                                    {{ $NumVotes }}
+                                    
                                     Vote/s </span>
                             </h3>
 
                             <h3 class="text-3xl font-bold"> Invalid Votes: <span
-                                    class= "font-italic text-red-900">{{ $Invalid }} Vote/s</span>
+                                    class= "font-italic text-red-900"> Vote/s</span>
                             </h3>
                         </div>
                         <div class="flex items-start">
