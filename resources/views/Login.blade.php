@@ -9,11 +9,11 @@
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <style>
         body {
-            background: rgb(190, 116, 166);
+            background: rgb(97, 0, 0);
         }
 
         .forget-pwd>a {
-            color: #d51daa; 
+            color: #510000; 
             font-weight: 500;
         }
 
@@ -35,7 +35,7 @@
         }
 
         .btnForget {
-            background: #89117f;
+            background: #510000;
             border: none;
             width: 80%;
         }

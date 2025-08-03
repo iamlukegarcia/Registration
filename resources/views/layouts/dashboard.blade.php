@@ -10,7 +10,7 @@
                 <div class="flex justify-between items-start w-full">
                     <div class="flex-col items-center">
                         <div class="flex items-center mb-1">
-                            <h5 class="text-xl font-bold leading-none text-black-900 me-1"> VOTE MONITORING (CITYWIDE)
+                            <h5 class="text-xl font-bold leading-none text-black-900 me-1"> TAXPAYERS MONITORING 
                             </h5>
                         </div>
                     </div>
@@ -26,9 +26,9 @@
                         <div class="card ">
                             <div class="card-body px-3    text-dark">
                                 <div class="d-flex justify-content-between">
-                                    <p class="text-muted font-13 mb-0">Total Registered Voters</p>
+                                    <p class="text-muted font-13 mb-0">Total Confirmed Taxpayers</p>
                                 </div>
-                                <h2 class="font-weight-bold"> {{ $RegVotes }}</h2>
+                                <h2 class="font-weight-bold">265</h2>
                             </div>
                         </div>
                     </div>
@@ -38,10 +38,10 @@
                         <div class="card">
                             <div class="card-body px-3 text-dark">
                                 <div class="d-flex justify-content-between">
-                                    <p class="text-muted font-13 mb-0">Total Voters Voted</p>
+                                    <p class="text-muted font-13 mb-0">Total Individuals Present </p>
                                 </div>
-                                <h2 class="font-weight-semibold"> {{ $NumVotes }}
-                                    <span class="text-info">({{ round(($NumVotes / $RegVotes) * 100, 2) }}%)</span>
+                                <h2 class="font-weight-semibold"> {{$confirmed}}
+                                    <span class="text-info">({{round($confirmed/265 *100)}}%)</span>
                                 </h2>
                             </div>
                         </div>
@@ -51,25 +51,11 @@
                             <div class="card-body px-3 text-dark">
                                 <div class="d-flex justify-content-between">
                                     <p class="text-muted font-13 mb-0"><span
-                                            class="font-weight-bold text-danger">NOT</span> Voted yet</p>
+                                            class="font-weight-bold text-danger">NOT</span> Present yet</p>
                                 </div>
-                                <h2 class="font-weight-semibold"> {{ $RegVotes - $NumVotes }}
+                                <h2 class="font-weight-semibold">{{265 - $confirmed}}
                                     <span
-                                        class="text-info">({{ round((($RegVotes - $NumVotes) / $RegVotes) * 100, 2) }}%)</span>
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 stretch-card grid-margin">
-                        <div class="card">
-                            <div class="card-body px-3 text-dark">
-                                <div class="d-flex justify-content-between">
-                                    <p class="text-muted font-13 mb-0">Total Invalid Votes</p>
-                                </div>
-                                <h2 class="font-weight-semibold">{{ $InvalidVotes }}
-                                    <span class="text-info">({{ round(($InvalidVotes / $RegVotes) * 100, 2) }}%)</span>
+                                        class="text-info">({{round((265 - $confirmed)/265 *100)}}%)</span>
                                 </h2>
                             </div>
                         </div>
@@ -80,7 +66,7 @@
         </div>
 
 
-
+{{-- 
         <!-- Barangay Level starts here -->
         <div class="row mb-3">
             <div class=" w-full bg-white rounded-lg shadow-sm dark:bg-gray-800 p-2">
@@ -166,4 +152,4 @@
     <!-- partial:partials/_footer.html -->
     @include('layouts.partial.footer')
     <!-- partial -->
-</div>
+</div> --}}

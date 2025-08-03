@@ -22,7 +22,7 @@ class UserInfoController extends Controller
         
 
        
-        return view('UserInput', [
+        return view('Taxpayers', [
             'name' => $name,
         ]);
     }

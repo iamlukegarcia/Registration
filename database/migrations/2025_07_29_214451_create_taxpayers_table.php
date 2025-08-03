@@ -18,7 +18,12 @@ return new class extends Migration
             $table->integer('rank');
             $table->string('CompanyName');
             $table->string('GuestName');
-            $table->boolean('confirmed');
+            $table->string('Table#');
+            $table->string('Usher');
+            $table->string('Batch#');
+            $table->string('LOC');
+            $table->string('REMARKS');
+            $table->string('confirmed');
             $table->timestamps();
         });
     }

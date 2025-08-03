@@ -80,9 +80,7 @@
 <script>
     const getChartOptions = () => {
         return {
-            series: [{{ round(($NumVotes / $RegVotes) * 100, 2) }},
-                {{ round((($RegVotes - $NumVotes) / $RegVotes) * 100, 2) }}
-            ],
+            series: [{{$confirmed/265 *100}} ,{{265 - $confirmed/265 *100}}  ],
             colors: ["#681200", "#9f9f9f"],
             chart: {
                 height: 420,
@@ -104,7 +102,7 @@
                     }
                 },
             },
-            labels: ["Voted", "Not Voted"],
+            labels: ["Present", "Not yet"],
             dataLabels: {
                 enabled: true,
                 style: {
@@ -144,119 +142,7 @@
     }
     // end pie chart
 
-    //start line chart 
-
-    const options = {
-        series: [{
-                name: "Voted",
-                color: "#681200",
-                data: [{{ $Baclaran }},
-                    {{ $Banay }}, {{ $Banlic }},
-                    {{ $Bigaa }}, {{ $Butong }}, {{ $Casile }}, {{ $Diezmo }},
-                    {{ $Gulod }}, {{ $Mamatid }}, {{ $Marinig }}, {{ $Niugan }},
-                    {{ $Pittland }}, {{ $Pulo }}, {{ $Sala }}, {{ $SanIsidro }},
-                    {{ $PobUno }}, {{ $PobDos }}, {{ $PobTres }}
-                ],
-            },
-            {
-                name: "Not Voted",
-                data: [{{100 - $Baclaran}},
-                    {{100 - $Banay }}, {{100 - $Banlic }},
-                    {{100 - $Bigaa }}, {{100 - $Butong }}, {{100 - $Casile }}, {{100 - $Diezmo }},
-                    {{100 - $Gulod }}, {{100 - $Mamatid }}, {{100 - $Marinig }}, {{100 - $Niugan }},
-                    {{100 - $Pittland }}, {{100 - $Pulo }}, {{100 - $Sala }}, {{100 - $SanIsidro }},
-                    {{100 - $PobUno }}, {{100 - $PobDos }}, {{100 - $PobTres }}],
-                color: "#9f9f9f",
-            }
-        ],
-        chart: {
-            sparkline: {
-                enabled: false,
-            },
-            type: "bar",
-            width: "100%",
-            height: 1000,
-            toolbar: {
-                show: false,
-            }
-        },
-        fill: {
-            opacity: 1,
-        },
-        plotOptions: {
-            bar: {
-                horizontal: true,
-                columnWidth: "100%",
-                borderRadiusApplication: "end",
-                borderRadius: 6,
-                dataLabels: {
-                    position: "top",
-                },
-            },
-        },
-        legend: {
-            show: true,
-            position: "bottom",
-        },
-        dataLabels: {
-            enabled: false,
-        },
-        tooltip: {
-            shared: true,
-            intersect: false,
-            formatter: function(value) {
-                return value + "yy%"
-            }
-        },
-        xaxis: {
-            labels: {
-                show: true,
-                style: {
-                    fontFamily: "Inter, sans-serif",
-                    cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-                },
-                formatter: function(value) {
-                    return value + "%"
-                }
-            },
-            categories: ["Baclaran", "Banay-Banay", "Banlic", "Bigaa", "Butong", "Casile",
-                "Diezmo", "Gulod", "Mamatid", "Marinig", "Niugan", "Pittland", "Pulo", "Sala", "San Isidro",
-                "Pob. Uno", "Pob. Dos", "Pob. Tres",
-            ],
-            axisTicks: {
-                show: false,
-            },
-            axisBorder: {
-                show: false,
-            },
-        },
-        yaxis: {
-            labels: {
-                show: true,
-                style: {
-                    fontFamily: "Inter, sans-serif",
-                    cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-                }
-            }
-        },
-        grid: {
-            show: true,
-            strokeDashArray: 4,
-            padding: {
-                left: 2,
-                right: 2,
-                top: -20
-            },
-        },
-        fill: {
-            opacity: 1,
-        }
-    }
-
-    if (document.getElementById("bar-chart") && typeof ApexCharts !== 'undefined') {
-        const chart = new ApexCharts(document.getElementById("bar-chart"), options);
-        chart.render();
-    }
+ 
 </script>
 
 </html>

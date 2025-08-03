@@ -8,6 +8,7 @@
     <title>Taxpayer Search</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
@@ -46,8 +47,12 @@
                             <th>Rank</th>
                             <th>Company Name</th>
                             <th>Guest Name</th>
+                            <th>Table #</th>
+                            <th>Usher</th>
+                            <th>Batch #</th>
+                            <th>Location</th>
                             <th>Confirmed?</th>
-                            <th width="100px">Action</th>
+                            <th width="120px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +62,36 @@
         </div>
     </div>
 
+
+    <!-- Edit Modal -->
+<div class="modal fade" id="editGuestModal" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="editGuestForm">
+      @csrf
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editGuestLabel">Edit Guest Name</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="edit_id" name="id">
+          <div class="mb-3">
+            <label for="guest_name" class="form-label">Guest Name</label>
+            <input type="text" class="form-control" id="guest_name" name="guest_name" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
 </body>
+
+
 
 <script type="text/javascript">
     $(function() {
@@ -82,6 +116,22 @@
                 {
                     data: 'GuestName',
                     name: 'GuestName',
+                },
+                 {
+                    data: 'Table#',
+                    name: 'Table#',
+                },
+                 {
+                    data: 'Usher',
+                    name: 'Usher',
+                },
+                {
+                    data: 'Batch#',
+                    name: 'Batch#',
+                },
+                {
+                    data: 'LOC',
+                    name: 'LOC',
                 },
                 {
                     data: 'confirmed',
@@ -120,6 +170,38 @@
             }
         });
     });
+
+
+    $(document).on('click', '.edit-btn', function () {
+    let id = $(this).data('id');
+    let guest = $(this).data('guest');
+
+    $('#edit_id').val(id);
+    $('#guest_name').val(guest);
+
+    $('#editGuestModal').modal('show');
+});
+
+    $('#editGuestForm').submit(function (e) {
+        e.preventDefault();
+        let formData = $(this).serialize();
+
+        $.ajax({
+            url: '{{ route("taxpayer.updateGuest") }}',
+            method: 'POST',
+            data: formData,
+            success: function (res) {
+                if (res.success) {
+                    $('#editGuestModal').modal('hide');
+                    $('.data-table').DataTable().ajax.reload(null, false);
+                }
+            },
+            error: function () {
+                alert('Failed to update guest name.');
+            }
+        });
+    });
+
 </script>
 
 </body>
