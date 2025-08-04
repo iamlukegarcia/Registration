@@ -133,10 +133,7 @@
                     data: 'LOC',
                     name: 'LOC',
                 },
-                {
-                    data: 'confirmed',
-                    name: 'confirmed',
-                },
+                
 
                 {
                     data: 'action',
