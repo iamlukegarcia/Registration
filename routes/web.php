@@ -46,5 +46,5 @@ Route::get('Reports', [ReportController::class,'index'])->name('ReportController
 
 Route::post('login', [LoginController::class,'authenticate'])->name('login.authenticate');;
 Route::post('logout', [LoginController::class,'logout'])->name('login.logout');;
-//Route::get('userinput', [UserInfoController::class,'index'])->name('login.get');;
+Route::get('userinput', [UserInfoController::class,'index'])->name('login.get');;
 //Route::post('UpdateVote', [UserInfoController::class,'UpdateVote'])->name('user.update');;
